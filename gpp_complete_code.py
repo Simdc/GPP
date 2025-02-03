@@ -6,7 +6,7 @@ import pandas as pd
 from tqdm import tqdm
 
 # Load the dataset
-file_path = "/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc"
+file_path = "/home/deepyama/GPP/VODCA2GPP_v1.nc"
 ds = xr.load_dataset(file_path, engine='netcdf4')
 
 # Group the data by month and calculate the monthly mean
