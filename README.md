@@ -172,6 +172,117 @@ python gpp_check_v1.py
 - Modify `pixels_per_row` to adjust plot layout in the PDF.
 - The script assumes nearest-neighbor selection for pixel extraction.
 
+Here's the updated README that includes the installation instructions for the necessary dependencies:
+
+---
+
+# FPAR data processing
+
+This Python script processes two GeoTIFF files containing FPAR (Fraction of Photosynthetically Active Radiation) and QC (Quality Control) data, calculates the monthly mean, coarsens the data using `xarray`, and saves the results as NetCDF files.
+
+## Table of Contents
+
+- [Dependencies](#dependencies)
+- [Description](#description)
+- [Code Overview](#code-overview)
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Dependencies
+
+Before running the script, ensure the following Python libraries are installed:
+
+- `rasterio`
+- `netCDF4`
+- `matplotlib`
+- `xarray`
+
+## Installation
+
+You can install the necessary dependencies using `pip` by running the following command:
+
+```bash
+pip install rasterio netCDF4 matplotlib xarray
+```
+
+Alternatively, you can create a `requirements.txt` file with the following contents:
+
+```
+rasterio
+netCDF4
+matplotlib
+xarray
+```
+
+Then, install the dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Description
+
+The script processes monthly data from two GeoTIFF files, one for the first half of the month and another for the second half. The primary objective is to:
+
+1. Read the FPAR and QC data from the files.
+2. Replace fill values with `NaN`.
+3. Scale the FPAR values.
+4. Calculate the monthly mean of FPAR and QC data.
+5. Coarsen the data using latitude and longitude factors.
+6. Save the results as NetCDF files for further use.
+
+The output consists of two NetCDF files:
+- One for FPAR data (`.nc`)
+- One for QC data (`.nc`)
+
+## Code Overview
+
+### Main Function: `process_fpar_to_netcdf`
+
+This function processes two GeoTIFF files to compute the monthly mean FPAR and QC data, coarsens it, and saves the results as NetCDF files.
+
+#### Parameters:
+- `file1`, `file2`: Path to the first and second GeoTIFF files.
+- `output_fpar_filename`, `output_qc_filename`: Names for the output NetCDF files.
+- `lat_factor`, `lon_factor`: Coarsening factors for latitude and longitude (default values are `6`).
+
+### Helper Function: `save_to_netcdf`
+
+This function saves the processed data into NetCDF files with proper attributes.
+
+#### Parameters:
+- `filename`: Path to the output NetCDF file.
+- `data`: Data to be saved.
+- `var_name`: Variable name in the NetCDF file.
+- `description`: Description of the variable.
+- `units`: Units for the variable.
+
+### Function: `run`
+
+The `run` function processes multiple years of data by constructing file names for each month between the specified start and end years. It calls `process_fpar_to_netcdf` to process the files and generate the output.
+
+#### Parameters:
+- `prefix`: Prefix for the input GeoTIFF files.
+- `start_year`, `end_year`: The range of years for processing.
+
+## Usage
+
+1. Make sure all dependencies are installed.
+2. Modify the `prefix`, `start_year`, and `end_year` variables to match your data.
+3. Call the `run` function to process the data.
+
+Example:
+
+```python
+prefix = "GIMMS_FPAR4g_"
+run(prefix, 1982, 2022)
+```
+
+This will process the data for the years 1982 to 2022 and save the output as NetCDF files for each month.
+
+---
+
+This README will provide users with clear instructions on how to install the necessary dependencies and use the script effectively.
 ## Author
 This script was developed for GPP dataset validation and analysis.
 
