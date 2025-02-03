@@ -262,7 +262,7 @@ This function saves the processed data into NetCDF files with proper attributes.
 The `run` function processes multiple years of data by constructing file names for each month between the specified start and end years. It calls `process_fpar_to_netcdf` to process the files and generate the output.
 
 #### Parameters:
-- `prefix`: Prefix for the input GeoTIFF files.
+- `prefix`: Prefix for the input GeoTIFF files. Also mention the the location of the files along with it, for example: prefix = "/path/to/your/files/GIMMS_FPAR4g_".
 - `start_year`, `end_year`: The range of years for processing.
 
 ## Usage
