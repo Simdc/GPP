@@ -141,6 +141,13 @@ Ensure you have the following Python libraries installed:
 ```bash
 pip install xarray numpy matplotlib cftime cartopy netcdf4 h5netcdf
 ```
+### **Locations of the NetCDF Datasets**
+The dataset is loaded using:
+```bash
+ds_old = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/FLUXCOMmet.GPP.360.720.1982.2010.30days.nc", decode_times=False)
+ds_new = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc", decode_times=False)
+```
+
 
 ## Features
 - Converts time formats to `proleptic_gregorian` if necessary.
