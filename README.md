@@ -1,89 +1,114 @@
-# README: GPP Data Processing and Analysis
+# **GPP NetCDF Processing Pipeline**
 
-## Overview
-This project processes and analyzes Gross Primary Production (GPP) data from NetCDF files using Python. It includes spatial coarsening, uncertainty computation, and visualization.
+## **Overview**
+This script processes a NetCDF dataset (`VODCA2GPP_v1.nc`) containing Gross Primary Production (GPP) and uncertainty data. The script performs the following tasks:
 
-## Installation
-Ensure you have the required dependencies installed:
+1. **Load the dataset** using `xarray`.
+2. **Aggregate the data monthly** by computing the mean and adjusting for the number of days in each month.
+3. **Ensure full-year coverage** by filling missing months with NaNs if the dataset does not start in January or end in December.
+4. **Coarsen spatial resolution** by averaging over spatial regions.
+5. **Batch process the data** to avoid memory overload, saving processed data incrementally.
+6. **Save the combined GPP dataset** as a NetCDF file.
+7. **Process uncertainty data**, apply coarsening, scale it, and save it separately.
+
+---
+
+## **Installation**
+Ensure you have the required Python libraries installed before running the script:
 ```bash
-pip install numpy pandas xarray tqdm netCDF4 matplotlib cartopy cftime
+pip install numpy pandas xarray netCDF4 tqdm
 ```
 
-## GPP Data Processing
-The script performs the following steps:
-1. **Load the NetCDF file** (`VODCA2GPP_v1.nc`).
-2. **Compute Monthly Mean GPP**:
-   - Resample data by month.
-   - Multiply by the number of days per month to get total monthly values.
-3. **Ensure Data Completeness**:
-   - Adds missing months to ensure a complete year (January to December).
-4. **Coarsen Spatial Resolution**:
-   - Uses a `pad` factor to reduce resolution.
-5. **Batch Processing**:
-   - Divides the dataset into `num_batches` to manage memory usage.
-   - Saves coarsened results to NetCDF.
-6. **Uncertainty Computation**:
-   - Computes and scales uncertainty values.
+### **Required Modules**
+- `os`: Handles file system operations.
+- `gc`: Manages garbage collection to free memory.
+- `numpy (np)`: Used for numerical computations.
+- `xarray (xr)`: Used for handling multidimensional NetCDF data.
+- `pandas (pd)`: Used for date/time manipulation.
+- `tqdm`: Provides a progress bar for batch processing.
 
-## How to Calculate `pad`
-The `pad` value determines the coarsening factor for latitude and longitude.
-- Choose a suitable factor based on the dataset's resolution.
-- Example: If original data has `0.1°` resolution and you need `0.5°`, set `pad = 5`.
+---
 
-## Visualization & Validation (`gpp_check_v1.py`)
-The second script (`gpp_check_v1.py`) performs the following:
-1. **Loads datasets** (`FLUXCOMmet.GPP.360.720.1982.2010.30days.nc` and `VODCA2GPP_v1.nc`).
-2. **Converts time to `proleptic_gregorian` format**.
-3. **Resamples the new dataset to monthly values**.
-4. **Clips data to common time ranges**.
-5. **Extracts GPP values at selected pixels**.
-6. **Plots GPP time series comparisons** and saves to `gpp_plots.pdf`.
+## **Usage**
+To run the script, simply execute:
+```bash
+python process_gpp.py
+```
+Ensure that `VODCA2GPP_v1.nc` is present in the same directory as the script.
 
-### Example Code from `gpp_check_v1.py`
+---
+
+## **Step-by-Step Processing**
+
+### **1. Load the NetCDF Dataset**
+The dataset is loaded using:
 ```python
-import xarray as xr
-import numpy as np
-import matplotlib.pyplot as plt
-import cftime
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-from matplotlib.backends.backend_pdf import PdfPages
-
-# Function to convert time format
-def convert_time_to_proleptic(ds, default_units="days since 1582-10-14 00:00:00"):
-    if "time" not in ds:
-        raise ValueError("Dataset does not contain a 'time' coordinate.")
-    
-    time_values = ds["time"].values
-
-    if isinstance(time_values[0], cftime._cftime.DatetimeProlepticGregorian):
-        print("Time values are already in cftime format.")
-    else:
-        time_units = ds["time"].attrs.get("units", default_units)
-        time_values = cftime.num2date(time_values, units=time_units, calendar="proleptic_gregorian")
-
-    ds["time"] = ("time", time_values)
-    return ds
+file_path = "VODCA2GPP_v1.nc"
+ds = xr.load_dataset(file_path, engine='netcdf4')
 ```
 
-## Output Files
-- `combined_GPP.nc`: Coarsened GPP dataset.
-- `coarsened_uncertainties.nc`: Coarsened uncertainty data.
-- `gpp_plots.pdf`: Visualization of old vs. new GPP data.
-
-## Usage
-Run the main processing script:
-```bash
-python gpp_processing.py
-```
-For validation and visualization:
-```bash
-python gpp_check_v1.py
+### **2. Compute Monthly Mean GPP**
+The script resamples the data to a monthly mean and adjusts for different month lengths:
+```python
+GPP_monthly_mean = (ds["GPP"]).resample(time='1MS').mean()
+GPP_monthly = GPP_monthly_mean * GPP_monthly_mean['time'].dt.days_in_month
 ```
 
-## License
-MIT License.
+### **3. Ensure Full-Year Coverage**
+If the dataset does not start in January or end in December, missing months are filled with NaNs.
 
-## Contact
-For questions, contact the project maintainer.
+### **4. Batch Processing and Spatial Coarsening**
+To manage memory efficiently, the data is divided into batches:
+```python
+pad = 2  # Define coarsening factor
+num_batches = 4
+batch_size = int(np.ceil(GPP_monthly.sizes["time"] / num_batches))
+lat_factor, lon_factor = pad, pad
+```
+Each batch undergoes spatial coarsening:
+```python
+coarsened_batch = batch_data.coarsen(lat=lat_factor, lon=lon_factor, boundary="trim").mean()
+```
+
+### **5. Save the Processed Data**
+The processed GPP data is saved in `combined_output/combined_GPP.nc`.
+
+### **6. Process Uncertainty Data**
+Uncertainty values are coarsened and scaled:
+```python
+coarsened_uncertainties = Uncertainties.coarsen(lat=lat_factor, lon=lon_factor, boundary="trim").mean()
+coarsened_uncertainties = coarsened_uncertainties * 1000 / 12
+```
+The resulting data is saved in `coarsened_uncertainties/coarsened_uncertainties.nc`.
+
+---
+
+## **How to Calculate `pad` (Coarsening Factor)**
+`pad` determines how many grid points are averaged when coarsening spatial resolution. The optimal value depends on the resolution of the dataset and the desired level of downscaling.
+
+To determine `pad`:
+1. **Check the dataset resolution** (e.g., if the dataset has a spatial resolution of `0.1° × 0.1°`, meaning 10 km per grid cell).
+2. **Decide the target resolution** (e.g., `0.2° × 0.2°` means averaging `2 × 2` grid cells → `pad = 2`).
+3. **Set `pad` accordingly**: Higher values increase spatial aggregation.
+
+For example, if the dataset is in `0.05° × 0.05°` resolution and you want `0.25° × 0.25°`, then:
+```python
+pad = 5  # Since 0.25 / 0.05 = 5
+```
+
+---
+
+## **Output Files**
+- **`combined_GPP.nc`**: Coarsened monthly GPP dataset.
+- **`coarsened_uncertainties.nc`**: Coarsened uncertainties dataset.
+
+---
+
+## **License**
+This project is open-source under the MIT License.
+
+---
+
+## **Contact**
+For any questions or issues, feel free to reach out.
 
