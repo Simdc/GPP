@@ -284,9 +284,8 @@ This will process the data for the years 1982 to 2022 and save the output as Net
 
 This README will provide users with clear instructions on how to install the necessary dependencies and use the script effectively.
 ## Author
-This script was developed for GPP dataset validation and analysis.
-
+This scripts are being developed for data processing pipeline on FOOTE. 
 ## **Contact**
-For any questions or issues, feel free to reach out.
+For any questions or issues, feel free to reach out to deepyama@pik-potsdam.de .
 
 ---
