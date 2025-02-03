@@ -6,7 +6,7 @@ module avail
 ```
 from the available anaconda modules choose one,
 ```bash
-module anaconda2023.09/
+module anaconda/2023.09
 ```
 After that based on what script you want to run install the important dependencies. In case you want to submit one of the scripts as a job save the following commands in a file, say run_gpp.slurm and run the file from cluster terminal,
 
