@@ -231,6 +231,14 @@ This function processes two GeoTIFF files to compute the monthly mean FPAR and Q
 - `output_fpar_filename`, `output_qc_filename`: Names for the output NetCDF files.
 - `lat_factor`, `lon_factor`: Coarsening factors for latitude and longitude (default values are `6`).
 
+#### Coarsening Factor:
+
+The coarsening factor controls how much the spatial resolution of the data is reduced by averaging neighboring cells. It is calculated as the ratio of the original resolution to the desired resolution:
+
+$Coarsening Factor=Original Resolution/Desired Resolution$
+
+For example, if the original grid has a resolution of 12° x 12° and you want to coarsen it to 2° x 2°, the coarsening factor would be 6 for both latitude and longitude. This means every 2x2 block of cells is averaged into a single coarsened cell.
+
 ### Helper Function: `save_to_netcdf`
 
 This function saves the processed data into NetCDF files with proper attributes.
