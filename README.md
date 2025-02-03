@@ -112,7 +112,7 @@ This script (`gpp_check_v1.py`) is designed to validate and compare Gross Primar
 ## Requirements
 Ensure you have the following Python libraries installed:
 ```bash
-pip install xarray numpy matplotlib cftime cartopy
+pip install xarray numpy matplotlib cftime cartopy netcdf4 h5netcdf
 ```
 
 ## Features
