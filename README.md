@@ -261,7 +261,7 @@ The `run` function processes multiple years of data by constructing file names f
 ## Usage
 
 1. Make sure all dependencies are installed.
-2. Modify the `prefix`, `start_year`, and `end_year` variables to match your data.
+2. Modify the `prefix`, `start_year`, `coarsening factor` and `end_year` variables to match your data.
 3. Call the `run` function to process the data.
 
 Example:
