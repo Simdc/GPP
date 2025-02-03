@@ -43,7 +43,7 @@ This script processes a NetCDF dataset (`VODCA2GPP_v1.nc`) containing Gross Prim
 ## **Installation**
 Ensure you have the required Python libraries installed before running the script:
 ```bash
-pip install numpy pandas xarray netCDF4 tqdm
+pip install numpy pandas xarray netCDF4 h5netcdf tqdm
 ```
 
 ### **Required Modules**
