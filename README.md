@@ -70,7 +70,7 @@ Ensure that `VODCA2GPP_v1.nc` is present in the same directory as the script.
 ### **1. Load the NetCDF Dataset**
 The dataset is loaded using:
 ```python
-file_path = "VODCA2GPP_v1.nc"
+file_path = "/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc"
 ds = xr.load_dataset(file_path, engine='netcdf4')
 ```
 
