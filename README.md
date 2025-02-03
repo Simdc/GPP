@@ -104,11 +104,44 @@ pad = 5  # Since 0.25 / 0.05 = 5
 
 ---
 
-## **License**
-This project is open-source under the MIT License.
+# GPP Data Validation and Visualization
 
----
+## Overview
+This script (`gpp_check_v1.py`) is designed to validate and compare Gross Primary Productivity (GPP) datasets by converting time formats, resampling data, and visualizing differences using latitude-longitude points. It generates a PDF containing time-series plots of selected pixels.
+
+## Requirements
+Ensure you have the following Python libraries installed:
+```bash
+pip install xarray numpy matplotlib cftime cartopy
+```
+
+## Features
+- Converts time formats to `proleptic_gregorian` if necessary.
+- Loads and processes two datasets: `FLUXCOMmet.GPP.360.720.1982.2010.30days.nc` and `VODCA2GPP_v1.nc`.
+- Resamples daily data to monthly means and corrects for varying month lengths.
+- Selects common time periods for accurate comparison.
+- Reads and processes pixel coordinates from `grid_cal_uniq.txt`.
+- Generates a PDF (`gpp_plots.pdf`) with GPP time-series plots at selected pixels.
+
+## Usage
+Run the script:
+```bash
+python gpp_check_v1.py
+```
+
+## Expected Outputs
+- **gpp_plots.pdf**: A set of plots comparing old and new GPP datasets at different lat/lon locations.
+- Printed logs indicating dataset processing steps and possible warnings.
+
+## Notes
+- Ensure the input files are present in the working directory.
+- Modify `pixels_per_row` to adjust plot layout in the PDF.
+- The script assumes nearest-neighbor selection for pixel extraction.
+
+## Author
+This script was developed for GPP dataset validation and analysis.
 
 ## **Contact**
 For any questions or issues, feel free to reach out.
 
+---
