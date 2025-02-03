@@ -8,22 +8,7 @@ from the available anaconda modules choose one,
 ```bash
 module load anaconda/2023.09
 ```
-After that based on what script you want to run install the important dependencies. In case you want to submit one of the scripts as a job save the following commands in a file, say run_gpp.slurm and run the file from cluster terminal,
-
-```bash
-#!/bin/bash
-    
-#SBATCH --job-name=test_job             # Name of the job
-#SBATCH --output=test-%j.out            # Output file (%j is the job ID)
-#SBATCH --error=test-%j.err             # Error file (%j is the job ID)
-#SBATCH --workdir=/p/tmp/deepyama/GPP   # Replace with your working directory
-#SBATCH --mem=10G                       # Request 5GB of RAM
-#SBATCH --time=01:00:00                 # Set the job runtime to 60 minutes
-#SBATCH --priority=high                 # Set the job priority to high
-
-module load python/3.9                 # Load the Python module (adjust version as needed)
-python gpp_complete_code.py                 # Run your script
-```
+After that based on what script you want to run install the important dependencies.
 
 # **GPP NetCDF Processing Pipeline**
 
