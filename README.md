@@ -154,7 +154,7 @@ ds_new = xr.open_dataset("/home/deepyama/GPP/VODCA2GPP_v1.nc", decode_times=Fals
 - Loads and processes two datasets: `FLUXCOMmet.GPP.360.720.1982.2010.30days.nc` and `VODCA2GPP_v1.nc`.
 - Resamples daily data to monthly means and corrects for varying month lengths.
 - Selects common time periods for accurate comparison.
-- Reads and processes pixel coordinates from `grid_cal_uniq.txt`.
+- Reads and processes pixel coordinates from `grid_cal_uniq.txt`(/p/projects/lpjml/calibration/input/tropical_allsoils/grid_cal_uniq.txt).
 - Generates a PDF (`gpp_plots.pdf`) with GPP time-series plots at selected pixels.
 
 ## Usage
