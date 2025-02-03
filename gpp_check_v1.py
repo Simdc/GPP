@@ -34,7 +34,7 @@ def convert_time_to_proleptic(ds, default_units="days since 1582-10-14 00:00:00"
 
 # Load datasets
 ds_old = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/FLUXCOMmet.GPP.360.720.1982.2010.30days.nc", decode_times=False)
-ds_new = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc", decode_times=False)
+ds_new = xr.open_dataset("/home/deepyama/GPP/VODCA2GPP_v1.nc", decode_times=False)
 
 
 # Convert time to proleptic
