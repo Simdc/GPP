@@ -70,7 +70,7 @@ Ensure that `VODCA2GPP_v1.nc` is present in the same directory as the script.
 ### **1. Load the NetCDF Dataset**
 The dataset is loaded using:
 ```python
-file_path = "/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc"
+file_path = "/home/deepyama/GPP/VODCA2GPP_v1.nc"
 ds = xr.load_dataset(file_path, engine='netcdf4')
 ```
 
@@ -145,7 +145,7 @@ pip install xarray numpy matplotlib cftime cartopy netcdf4 h5netcdf
 The dataset is loaded using:
 ```bash
 ds_old = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/FLUXCOMmet.GPP.360.720.1982.2010.30days.nc", decode_times=False)
-ds_new = xr.open_dataset("/p/projects/lpjml/calibration/reference_data/VODCA2GPP_wild2021_GPP_1988-2020.nc", decode_times=False)
+ds_new = xr.open_dataset("/home/deepyama/GPP/VODCA2GPP_v1.nc", decode_times=False)
 ```
 
 
