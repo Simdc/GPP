@@ -93,7 +93,7 @@ def clean_data(file_path):
     return np.array(cleaned_lines)
 
 # Load and clean the data
-modified_pixels = clean_data("grid_cal_uniq.txt")
+modified_pixels = clean_data("/p/projects/lpjml/calibration/input/tropical_allsoils/grid_cal_uniq.txt")
 
 # Print the first few rows to verify the data
 #print(modified_pixels)
