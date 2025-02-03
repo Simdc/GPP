@@ -59,7 +59,7 @@ pip install numpy pandas xarray netCDF4 h5netcdf tqdm
 ## **Usage**
 To run the script, simply execute:
 ```bash
-python process_gpp.py
+python gpp_complete_code.py
 ```
 Ensure that `VODCA2GPP_v1.nc` is present in the same directory as the script.
 
