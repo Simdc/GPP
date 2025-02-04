@@ -165,7 +165,7 @@ Here's the updated README that includes the installation instructions for the ne
 
 # FPAR data processing
 
-This Python script processes two GeoTIFF files containing FPAR (Fraction of Photosynthetically Active Radiation) and QC (Quality Control) data, calculates the monthly mean, coarsens the data using `xarray`, and saves the results as NetCDF files.
+This Python script(fpar.py) processes two GeoTIFF files containing FPAR (Fraction of Photosynthetically Active Radiation) and QC (Quality Control) data, calculates the monthly mean, coarsens the data using `xarray`, and saves the results as NetCDF files.
 
 ## Table of Contents
 
