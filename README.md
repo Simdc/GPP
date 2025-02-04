@@ -265,7 +265,7 @@ The `run` function processes multiple years of data by constructing file names f
 1. Make sure all dependencies are installed.
 2. Modify the `prefix`, `start_year`, `coarsening factor` and `end_year` variables to match your data.
 3. Call the `run` function to process the data.
-4. In our case the fill_value and scaling factor was mentioned based on the dataset, for other datasets make sure to modify them, the code snippet below must be modified,
+4. In our case the fill_value and scaling factor was mentioned based on the dataset, for other datasets make sure to modify them, the code snippet(from function process_fpar_to_netcdf) below must be modified,
 
 ```python
 data1_fpar[data1_fpar == 65535] = np.nan
