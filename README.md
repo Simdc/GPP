@@ -46,7 +46,7 @@ To run the script, simply execute:
 ```bash
 python gpp_complete_code.py
 ```
-Ensure that `VODCA2GPP_v1.nc` is present in the same directory as the script.
+Ensure that `VODCA2GPP_v1.nc`(the data.nc file to process) is present in the same directory as the script. Also modify the pad value(coarsening factor) if necessary. More on pad value is mentioned below. 
 
 ---
 
