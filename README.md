@@ -147,7 +147,7 @@ Run the script:
 ```bash
 python gpp_check_v1.py
 ```
-
+Make sure to correctly modify the location of the datasets to be compared.
 ## Expected Outputs
 - **gpp_plots.pdf**: A set of plots comparing old and new GPP datasets at different lat/lon locations.
 - Printed logs indicating dataset processing steps and possible warnings.
