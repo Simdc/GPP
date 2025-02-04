@@ -46,7 +46,7 @@ To run the script, simply execute:
 ```bash
 python gpp_complete_code.py
 ```
-Ensure that `VODCA2GPP_v1.nc`(the data.nc file to process) is present in the same directory as the script. Also modify the pad value(coarsening factor) if necessary. More on pad value is mentioned below. 
+Ensure that `VODCA2GPP_v1.nc`(the data.nc file to process) is present in the same directory as the script. Also modify the pad value(coarsening factor) if necessary. More on pad value is mentioned below. The 1000/12 factor used for unit conversion under point 6., must be also be changed if you do not want to convert your data from kg/yr to g/mon. 
 
 ---
 
@@ -93,7 +93,8 @@ coarsened_uncertainties = coarsened_uncertainties * 1000 / 12
 ```
 The resulting data is saved in `coarsened_uncertainties/coarsened_uncertainties.nc`.
 
-Note:  The 1000/12 factor converts the kg/yr to g/mon. This factor must be modified based on units of the original dataset.
+It is to note that the 1000/12 factor converts the kg/yr to g/mon. This factor must be modified based on units of the original dataset.
+
 ---
 
 ## **How to Calculate `pad` (Coarsening Factor)**
