@@ -276,6 +276,7 @@ data2_qc[data2_qc == 65535] = np.nan
 ```
 
 Example:
+In our case the input file start with prefix "GIMMS_FPAR4g_" thus we pass it as prefix. If the input files and the code are not in same directory then please also add the PATH with the prefix prefix. In that case prefix looks like, prefix = "C:\home\documents\data\GIMMS_FPAR4g_". Also, correct start year and end year must be mentioned with the run.
 
 ```python
 prefix = "GIMMS_FPAR4g_"
