@@ -276,7 +276,17 @@ data2_fpar *= 0.001
 data1_qc[data1_qc == 65535] = np.nan
 data2_qc[data2_qc == 65535] = np.nan
 ```
+5. The following code snippet adds details to netcdf file we are generating, which must also be modified based on user's input.
 
+```python
+    save_to_netcdf(
+        output_fpar_filename, fpar_monthly_mean_coarsened, var_name="fpar", description="Monthly mean FPAR, sourced from PKU  GIMMS  NDVI  (1982 — 2015) & SI FPAR CDR  (2016 — 2022)",
+        units="Fraction",  long_name = "Fraction of photosynthetic active radiation"
+    )
+    save_to_netcdf(
+        output_qc_filename, qc_monthly_mean_coarsened, var_name="qc", description="Monthly mean Quality Control (QC) data, inherited from PKU GIMMS NDVI 1982-2015. Here quality of data points are defined as 0,1,2,3, in decreasing order. For 2016-2022 the data are from SI FPAR CDR, and the QC is 9.", units=None, long_name="Quality Control")
+```
+        
 Example:
 In our case the input file start with prefix "GIMMS_FPAR4g_" thus we pass it as prefix. If the input files and the code are not in same directory then please also add the PATH with the prefix. In that case prefix looks like, prefix = "C:\home\documents\data\GIMMS_FPAR4g_". Also, correct start year and end year must be mentioned with the function-run.
 
