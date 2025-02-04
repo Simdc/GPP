@@ -13,7 +13,7 @@ After that based on what script you want to run install the important dependenci
 # **GPP NetCDF Processing Pipeline**
 
 ## **Overview**
-This script processes a NetCDF dataset (`VODCA2GPP_v1.nc`) containing Gross Primary Production (GPP) and uncertainty data. The script performs the following tasks:
+This script (gpp_complete_code.py) processes a NetCDF dataset (`VODCA2GPP_v1.nc`) containing Gross Primary Production (GPP) and uncertainty data. The script performs the following tasks:
 
 1. **Load the dataset** using `xarray`.
 2. **Aggregate the data monthly** by computing the mean and adjusting for the number of days in each month.
