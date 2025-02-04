@@ -93,6 +93,7 @@ coarsened_uncertainties = coarsened_uncertainties * 1000 / 12
 ```
 The resulting data is saved in `coarsened_uncertainties/coarsened_uncertainties.nc`.
 
+Note:  The 1000/12 factor converts the kg/yr to g/mon. This factor must be modified based on units of the original dataset.
 ---
 
 ## **How to Calculate `pad` (Coarsening Factor)**
