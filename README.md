@@ -47,7 +47,7 @@
 - 
 ## **General Overview**
 
-This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Foote cluster. Each script serves a specific purpose:
+This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Foote cluster. The necessary datafiles used in these scripts are found here: `/p/projects/lpjml/calibration/raw_files` .Each script serves a specific purpose:
 
 ### 1. **GPP NetCDF Processing Pipeline (gpp_complete_code.py):**
 - Processes a NetCDF dataset containing Gross Primary Production (GPP) and uncertainty data.
