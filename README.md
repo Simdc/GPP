@@ -43,7 +43,8 @@
   - Helper Function: `save_to_netcdf`
   - Function: `run`
 - Usage
-
+- Output Files
+- 
 ## **General Overview**
 
 This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Foote cluster. Each script serves a specific purpose:
@@ -352,7 +353,9 @@ prefix = "GIMMS_FPAR4g_"
 run(prefix, 1982, 2022)
 ```
 
-This will process the data for the years 1982 to 2022 and save the output as NetCDF files for each month.
+## **Output Files**
+- **`mod_FPAR_combined.nc`**
+- **`mod_QC_combined.nc`**
 
 ---
 
