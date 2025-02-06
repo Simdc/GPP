@@ -21,9 +21,9 @@ This repository contains three Python scripts designed for processing NetCDF and
 
 All scripts are designed to run efficiently on the foote cluster. Before running, ensure the correct modules and dependencies are loaded.
 
-## **foote Commands**
+## **Foote Commands**
 
-To run these scripts on foote, first load the required Anaconda module:
+The following commands are based on the assumption that you are already logged in to the cluster.To run these scripts on foote, first load the required Anaconda module:
 ```bash
 module avail
 ```
@@ -144,7 +144,7 @@ pad = 5  # Since 0.25 / 0.05 = 5
 # GPP Data Validation and Visualization
 
 ## Overview
-This script (`gpp_check_v1.py`) is designed to validate and compare Gross Primary Productivity (GPP) datasets by converting time formats, resampling data, and visualizing differences using latitude-longitude points. It generates a PDF containing time-series plots of selected pixels.
+This script (`gpp_check_v1.py`) is designed to validate and compare Gross Primary Productivity (GPP) datasets by converting time formats, resampling data, and visualizing differences using latitude-longitude points. It generates a PDF containing outputs of specific pixels from both the datasets side by side for comparison.
 
 ## Requirements
 Ensure you have the following Python libraries installed:
@@ -182,21 +182,11 @@ Make sure to correctly modify the location of the datasets to be compared.
 - Modify `pixels_per_row` to adjust plot layout in the PDF.
 - The script assumes nearest-neighbor selection for pixel extraction.
 
-Here's the updated README that includes the installation instructions for the necessary dependencies:
-
 ---
 
 # FPAR data processing
 
 This Python script(fpar.py) processes two GeoTIFF files containing FPAR (Fraction of Photosynthetically Active Radiation) and QC (Quality Control) data, calculates the monthly mean, coarsens the data using `xarray`, and saves the results as NetCDF files.
-
-## Table of Contents
-
-- [Dependencies](#dependencies)
-- [Description](#description)
-- [Code Overview](#code-overview)
-- [Installation](#installation)
-- [Usage](#usage)
 
 ## Dependencies
 
@@ -322,7 +312,6 @@ This will process the data for the years 1982 to 2022 and save the output as Net
 
 ---
 
-This README will provide users with clear instructions on how to install the necessary dependencies and use the script effectively.
 ## Author
 This scripts are being developed for data processing pipeline on FOOTE. 
 ## **Contact**
