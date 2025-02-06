@@ -1,14 +1,37 @@
-# **Footie commands (optional)**
-To run this script on footie first execute the follwoing commands,
+# **NetCDF Data Processing Pipeline on Footie**
 
+## **General Overview**
+
+This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Footie cluster. Each script serves a specific purpose:
+
+### 1. **GPP NetCDF Processing Pipeline (gpp_complete_code.py):**
+- Processes a NetCDF dataset containing Gross Primary Production (GPP) and uncertainty data.
+- Performs monthly aggregation, spatial coarsening, batch processing, and data validation.
+- Saves the processed data as NetCDF files.
+
+### 2. **GPP Data Validation and Visualization (gpp_check_v1.py):**
+- Compares different GPP datasets to ensure consistency.
+- Converts time formats, resamples data, and visualizes differences.
+- Generates time-series plots of selected pixels.
+
+### 3. **FPAR Data Processing (fpar.py):**
+
+- Processes FPAR (Fraction of Photosynthetically Active Radiation) data from GeoTIFF files.
+- Computes monthly means, applies spatial coarsening, and saves results as NetCDF files.
+
+All scripts are designed to run efficiently on the Footie cluster. Before running, ensure the correct modules and dependencies are loaded.
+
+## **Footie Commands**
+
+To run these scripts on Footie, first load the required Anaconda module:
 ```bash
 module avail
 ```
-from the available anaconda modules choose one,
+Choose an appropriate Anaconda module and load it:
 ```bash
 module load anaconda/2023.09
 ```
-After that based on what script you want to run install the important dependencies.
+After that, install the necessary dependencies for the script you want to run.
 
 # **GPP NetCDF Processing Pipeline**
 
