@@ -1,5 +1,51 @@
 # **NetCDF Data Processing Pipeline on Foote**
 
+# Table of Contents
+
+## 1. General Overview
+- Purpose of the Repository
+- Summary of Scripts
+
+## 2. Foote Commands
+- Loading Required Modules
+- Installing Dependencies
+
+## 3. GPP NetCDF Processing Pipeline
+- Overview
+- Installation
+- Required Modules
+- Usage
+- Step-by-Step Processing
+  - Load the NetCDF Dataset
+  - Compute Monthly Mean GPP
+  - Ensure Full-Year Coverage
+  - Batch Processing and Spatial Coarsening
+  - Save the Processed Data
+  - Process Uncertainty Data
+- How to Calculate `pad` (Coarsening Factor)
+- Output Files
+
+## 4. GPP Data Validation and Visualization
+- Overview
+- Requirements
+- Locations of the NetCDF Datasets
+- Features
+- Usage
+- Expected Outputs
+- Notes
+
+## 5. FPAR Data Processing
+- Dependencies
+- Installation
+- Description
+- Code Overview
+  - Main Function: `process_fpar_to_netcdf`
+  - Helper Function: `save_to_netcdf`
+  - Function: `run`
+- Usage
+- Modifications Required for Different Datasets
+
+
 ## **General Overview**
 
 This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Foote cluster. Each script serves a specific purpose:
