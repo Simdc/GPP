@@ -1,8 +1,8 @@
-# **NetCDF Data Processing Pipeline on Footie**
+# **NetCDF Data Processing Pipeline on Foote**
 
 ## **General Overview**
 
-This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Footie cluster. Each script serves a specific purpose:
+This repository contains three Python scripts designed for processing NetCDF and GeoTIFF datasets on the Foote cluster. Each script serves a specific purpose:
 
 ### 1. **GPP NetCDF Processing Pipeline (gpp_complete_code.py):**
 - Processes a NetCDF dataset containing Gross Primary Production (GPP) and uncertainty data.
@@ -19,11 +19,11 @@ This repository contains three Python scripts designed for processing NetCDF and
 - Processes FPAR (Fraction of Photosynthetically Active Radiation) data from GeoTIFF files.
 - Computes monthly means, applies spatial coarsening, and saves results as NetCDF files.
 
-All scripts are designed to run efficiently on the Footie cluster. Before running, ensure the correct modules and dependencies are loaded.
+All scripts are designed to run efficiently on the foote cluster. Before running, ensure the correct modules and dependencies are loaded.
 
-## **Footie Commands**
+## **foote Commands**
 
-To run these scripts on Footie, first load the required Anaconda module:
+To run these scripts on foote, first load the required Anaconda module:
 ```bash
 module avail
 ```
